@@ -33,7 +33,16 @@ app.get('/films/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
     let api = await request(swapi + "films/" + id);
-    console.log(api.title)
+
+    let characters = [];
+    for (let index in api.characters) {
+        const url = api.characters[index];
+        const number = url.split("/")[url.split("/").length - 2];
+        let name = await request(url);
+        name = name.name;
+        characters.push({ name: name, url: "/people/" + number });
+    };
+    api.characters = characters;
 
     const data = { title: api.title };
     res.render("index", data);
@@ -48,7 +57,6 @@ app.get('/people/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
     let api = await request(swapi + "people/" + id);
-    console.log(api.name)
 
     const data = { title: api.name };
     res.render("index", data);
@@ -64,7 +72,6 @@ app.get('/planets/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
     let api = await request(swapi + "planets/" + id);
-    console.log(api.name)
 
     const data = { title: api.name };
     res.render("index", data);
@@ -79,7 +86,6 @@ app.get('/species/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
     let api = await request(swapi + "species/" + id);
-    console.log(api.name)
 
     const data = { title: api.name };
     res.render("index", data);
@@ -94,7 +100,6 @@ app.get('/starships/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
     let api = await request(swapi + "starships/" + id);
-    console.log(api.name)
 
     const data = { title: api.name };
     res.render("index", data);
@@ -109,7 +114,6 @@ app.get('/vehicles/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
     let api = await request(swapi + "vehicles/" + id);
-    console.log(api.name)
 
     const data = { title: api.name };
     res.render("index", data);
