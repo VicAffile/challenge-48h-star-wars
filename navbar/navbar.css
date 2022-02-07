@@ -1,0 +1,13 @@
+.menu {
+    text-align: center;
+  }
+  
+  .menu-item {
+    display: inline-block;
+    min-width: 230px;
+    line-height: 50px;
+    background: white
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+  }
