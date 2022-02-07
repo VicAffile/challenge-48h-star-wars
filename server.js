@@ -54,6 +54,39 @@ app.get('/planets', (req, res) => {
 app.get('/planets/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const data = { title: "planetsId" };
+});
+
+app.get('/species', (req, res) => {
+    const data = { title: "Species" };
+    res.render("index", data);
+});
+
+app.get('/species/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const data = { title: "Species" };
+    console.log(id);
+    res.render("index", data);
+});
+
+app.get('/starships', (req, res) => {
+    const data = { title: "Starships" };
+    res.render("index", data);
+});
+
+app.get('/starships/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const data = { title: "Starships" };
+    res.render("index", data);
+});
+
+app.get('/vehicles', (req, res) => {
+    const data = { title: "Vehicles" };
+    res.render("index", data);
+});
+
+app.get('/vehicles/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const data = { title: "Vehicles" };
     res.render("index", data);
 });
 
