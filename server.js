@@ -33,8 +33,17 @@ app.get('/', (req, res) => {
     res.render("index", data);
 });
 
-app.get('/films', (req, res) => {
-    const data = { title: "films", navbar: navbar };
+app.get('/films', async(req, res) => {
+    const api = await request(swapi + "films");
+
+    let films = [];
+    for (let index in api.results) {
+        const title = api.results[index].title;
+        const number = api.results[index].url.split("/")[api.results[index].url.split("/").length - 2];
+        films.push({ title: title, url: "/films/" + number });
+    }
+
+    const data = { title: "Films", navbar: navbar, films: films };
     res.render("index", data);
 });
 
@@ -57,8 +66,22 @@ app.get('/films/:id', async(req, res) => {
     res.render("index", data);
 });
 
-app.get('/people', (req, res) => {
-    const data = { title: "people", navbar: navbar };
+app.get('/people', async(req, res) => {
+    const page = req.param("page");
+    let api;
+    if (page != undefined) {
+        api = await request(swapi + "people/?page=" + page);
+    } else {
+        api = await request(swapi + "people");
+    }
+    let people = [];
+    for (let index in api.results) {
+        const name = api.results[index].name;
+        const number = api.results[index].url.split("/")[api.results[index].url.split("/").length - 2];
+        people.push({ name: name, url: "/people/" + number });
+    }
+
+    const data = { title: "People", navbar: navbar, people: people };
     res.render("index", data);
 });
 
@@ -71,8 +94,22 @@ app.get('/people/:id', async(req, res) => {
     res.render("index", data);
 });
 
-app.get('/planets', (req, res) => {
-    const data = { title: "planets", navbar: navbar };
+app.get('/planets', async(req, res) => {
+    const page = req.param("page");
+    let api;
+    if (page != undefined) {
+        api = await request(swapi + "planets/?page=" + page);
+    } else {
+        api = await request(swapi + "planets");
+    }
+    let planets = [];
+    for (let index in api.results) {
+        const name = api.results[index].name;
+        const number = api.results[index].url.split("/")[api.results[index].url.split("/").length - 2];
+        planets.push({ name: name, url: "/planets/" + number });
+    }
+
+    const data = { title: "Planets", navbar: navbar, planets: planets };
     res.render("index", data);
 
 });
@@ -86,8 +123,23 @@ app.get('/planets/:id', async(req, res) => {
     res.render("index", data);
 });
 
-app.get('/species', (req, res) => {
-    const data = { title: "Species", navbar: navbar };
+app.get('/species', async(req, res) => {
+    const page = req.param("page");
+    let api;
+    if (page != undefined) {
+        api = await request(swapi + "species/?page=" + page);
+    } else {
+        api = await request(swapi + "species");
+    }
+    let species = [];
+    for (let index in api.results) {
+        const name = api.results[index].name;
+        const number = api.results[index].url.split("/")[api.results[index].url.split("/").length - 2];
+        species.push({ name: name, url: "/species/" + number });
+    }
+    console.log(species)
+
+    const data = { title: "Species", navbar: navbar, species: species };
     res.render("index", data);
 });
 
@@ -100,8 +152,22 @@ app.get('/species/:id', async(req, res) => {
     res.render("index", data);
 });
 
-app.get('/starships', (req, res) => {
-    const data = { title: "Starships", navbar: navbar };
+app.get('/starships', async(req, res) => {
+    const page = req.param("page");
+    let api;
+    if (page != undefined) {
+        api = await request(swapi + "starships/?page=" + page);
+    } else {
+        api = await request(swapi + "starships");
+    }
+    let starships = [];
+    for (let index in api.results) {
+        const name = api.results[index].name;
+        const number = api.results[index].url.split("/")[api.results[index].url.split("/").length - 2];
+        starships.push({ name: name, url: "/starships/" + number });
+    }
+
+    const data = { title: "Starships", navbar: navbar, starships: starships };
     res.render("index", data);
 });
 
@@ -114,8 +180,22 @@ app.get('/starships/:id', async(req, res) => {
     res.render("index", data);
 });
 
-app.get('/vehicles', (req, res) => {
-    const data = { title: "Vehicles", navbar: navbar };
+app.get('/vehicles', async(req, res) => {
+    const page = req.param("page");
+    let api;
+    if (page != undefined) {
+        api = await request(swapi + "vehicles/?page=" + page);
+    } else {
+        api = await request(swapi + "vehicles");
+    }
+    let vehicles = [];
+    for (let index in api.results) {
+        const name = api.results[index].name;
+        const number = api.results[index].url.split("/")[api.results[index].url.split("/").length - 2];
+        vehicles.push({ name: name, url: "/vehicles/" + number });
+    }
+
+    const data = { title: "Vehicles", navbar: navbar, vehicles: vehicles };
     res.render("index", data);
 });
 
