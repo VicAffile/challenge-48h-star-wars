@@ -2,7 +2,7 @@ const express = require('express');
 const swig = require('swig');
 const path = require('path');
 const bodyParser = require('body-parser');
-const https = require('https');
+const axios = require('axios');
 
 let app = express();
 app.use(bodyParser());
@@ -27,11 +27,14 @@ app.get('/films', (req, res) => {
     res.render("index", data);
 });
 
-app.get('/films/:id', (req, res) => {
+app.get('/films/:id', async(req, res) => {
     const id = parseInt(req.params.id);
-    const data = { title: "filmsId" };
-    res.render("index", data);
 
+    let api = await request("films/" + id);
+    console.log(api.title)
+
+    const data = { title: api.title };
+    res.render("index", data);
 });
 
 app.get('/people', (req, res) => {
@@ -92,3 +95,13 @@ app.get('/vehicles/:id', (req, res) => {
 
 app.listen(process.env.PORT || 8080);
 console.log("L'application tourne.");
+
+async function request(pathApi) {
+    try {
+        const response = await axios.get("https://swapi.dev/api/" + pathApi);
+        //console.log(response);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
