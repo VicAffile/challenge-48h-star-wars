@@ -21,6 +21,20 @@ app.get('/', (req, res) => {
     res.render("index", data);
 });
 
+app.get('/films/', (req, res) => {
+    const data = { title: "films" };
+    res.render("index", data);
+});
+
+app.get('/people/', (req, res) => {
+    const data = { title: "people" };
+    res.render("index", data);
+});
+
+app.get('/planets/', (req, res) => {
+    const data = { title: "planets" };
+    res.render("index", data);
+});
 
 app.listen(process.env.PORT || 8080);
 console.log("L'application tourne.");
