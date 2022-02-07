@@ -58,6 +58,8 @@ app.get('/films/:id', async(req, res) => {
     let starships = [];
     let vehicles = [];
 
+    console.log(characters, planets, starships, species, vehicles);
+
     for (let index in api.characters) {
         const url = api.characters[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -131,8 +133,13 @@ app.get('/people/:id', async(req, res) => {
 
     let api = await request(swapi + "people/" + id);
 
-    //films
     let films = [];
+    let species = [];
+    let vehicles = [];
+    let starships = [];
+    
+    console.log(films, species, starships, vehicles);
+
     for (let index in api.films) {
         const url = api.films[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -141,10 +148,7 @@ app.get('/people/:id', async(req, res) => {
         films.push({ film: film, url: "/films/" + number });
     };
     api.films = films;
-    // console.log(films);
 
-    //species
-    let species = [];
     for (let index in api.species) {
         const url = api.species[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -153,10 +157,7 @@ app.get('/people/:id', async(req, res) => {
         species.push({ specie: specie, url: "/species/" + number });
     };
     api.species = species;
-    // console.log(species);
 
-    //vehicles
-    let vehicles = [];
     for (let index in api.vehicles) {
         const url = api.vehicles[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -165,10 +166,7 @@ app.get('/people/:id', async(req, res) => {
         vehicles.push({ vehicle: vehicle, url: "/vehicles/" + number });
     };
     api.vehicles = vehicles;
-    // console.log(vehicles);
 
-    //starships
-    let starships = [];
     for (let index in api.starships) {
         const url = api.starships[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -177,7 +175,6 @@ app.get('/people/:id', async(req, res) => {
         starships.push({ starship: starship, url: "/starships/" + number });
     };
     api.starships = starships;
-    // console.log(starships);
 
     const data = { title: api.name };
     res.render("index", data);
@@ -208,8 +205,12 @@ app.get('/species/:id', async(req, res) => {
 
     let api = await request(swapi + "species/" + id);
 
-    //people
+
     let people = [];
+    let films = [];
+
+    console.log(people, films);
+
     for (let index in api.people) {
         const url = api.people[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -218,10 +219,7 @@ app.get('/species/:id', async(req, res) => {
         people.push({ people: peopl, url: "/people/" + number });
     };
     api.people = people;
-    // console.log(people);
 
-    //films
-    let films = [];
     for (let index in api.films) {
         const url = api.films[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -230,7 +228,6 @@ app.get('/species/:id', async(req, res) => {
         films.push({ films: film, url: "/films/" + number });
     };
     api.films = films;
-    // console.log(films);
 
     const data = { title: api.name };
     res.render("index", data);
@@ -266,6 +263,8 @@ app.get('/planets/:id', async(req, res) => {
 
     let films = [];
     let residents = [];
+
+    console.log(films, residents)
 
     for (let index in api.films) {
         const url = api.films[index];
@@ -317,6 +316,8 @@ app.get('/starships/:id', async(req, res) => {
     let films = [];
     let pilots = [];
 
+    console.log(films, pilots);
+
     for (let index in api.pilots) {
         const url = api.pilots[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -325,7 +326,6 @@ app.get('/starships/:id', async(req, res) => {
         pilots.push({ name: name, url: "/pilots/" + number });
     };
     api.pilots = pilots;
-    console.log(pilots);
 
     for (let index in api.films) {
         const url = api.films[index];
@@ -361,8 +361,12 @@ app.get('/vehicles/:id', async(req, res) => {
 
     let api = await request(swapi + "vehicles/" + id);
 
-    //pilots
     let pilots = [];
+    let films = [];
+
+    console.log(pilots, films);
+
+
     for (let index in api.pilots) {
         const url = api.pilots[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -371,10 +375,7 @@ app.get('/vehicles/:id', async(req, res) => {
         pilots.push({ pilot: pilot, url: "/people/" + number });
     };
     api.pilots = pilots;
-    // console.log(pilots);
 
-    //films
-    let films = [];
     for (let index in api.films) {
         const url = api.films[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -383,7 +384,6 @@ app.get('/vehicles/:id', async(req, res) => {
         films.push({ film: film, url: "/people/" + number });
     };
     api.films = films;
-    // console.log(films);
 
     const data = { title: api.name };
     res.render("index", data);
