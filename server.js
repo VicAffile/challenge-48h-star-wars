@@ -58,8 +58,6 @@ app.get('/films/:id', async(req, res) => {
     let starships = [];
     let vehicles = [];
 
-    console.log(characters, planets, starships, species, vehicles);
-
     for (let index in api.characters) {
         const url = api.characters[index];
         const number = url.split("/")[url.split("/").length - 2];
@@ -104,9 +102,9 @@ app.get('/films/:id', async(req, res) => {
         vehicles.push({ name: name, url: "/vehicles/" + number });
     };
     api.vehicles = vehicles;
-    console.log(vehicles);
 
     const data = { title: api.title };
+    res.render("index", data);
 });
 
 app.get('/people', async(req, res) => {
@@ -137,8 +135,6 @@ app.get('/people/:id', async(req, res) => {
     let species = [];
     let vehicles = [];
     let starships = [];
-    
-    console.log(films, species, starships, vehicles);
 
     for (let index in api.films) {
         const url = api.films[index];
@@ -205,11 +201,8 @@ app.get('/species/:id', async(req, res) => {
 
     let api = await request(swapi + "species/" + id);
 
-
     let people = [];
     let films = [];
-
-    console.log(people, films);
 
     for (let index in api.people) {
         const url = api.people[index];
@@ -264,13 +257,11 @@ app.get('/planets/:id', async(req, res) => {
     let films = [];
     let residents = [];
 
-    console.log(films, residents)
-
     for (let index in api.films) {
         const url = api.films[index];
         const number = url.split("/")[url.split("/").length - 2];
         let name = await request(url);
-        name = name.name;
+        name = name.title;
         films.push({ name: name, url: "/films/" + number });
     };
     api.films = films;
@@ -315,8 +306,6 @@ app.get('/starships/:id', async(req, res) => {
 
     let films = [];
     let pilots = [];
-
-    console.log(films, pilots);
 
     for (let index in api.pilots) {
         const url = api.pilots[index];
@@ -363,9 +352,6 @@ app.get('/vehicles/:id', async(req, res) => {
 
     let pilots = [];
     let films = [];
-
-    console.log(pilots, films);
-
 
     for (let index in api.pilots) {
         const url = api.pilots[index];
