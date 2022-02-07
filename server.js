@@ -4,6 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
+const swapi = "https://swapi.dev/api/";
+
 let app = express();
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'publics')));
@@ -30,7 +32,7 @@ app.get('/films', (req, res) => {
 app.get('/films/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
-    let api = await request("films/" + id);
+    let api = await request(swapi + "films/" + id);
     console.log(api.title)
 
     const data = { title: api.title };
@@ -45,7 +47,7 @@ app.get('/people', (req, res) => {
 app.get('/people/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
-    let api = await request("people/" + id);
+    let api = await request(swapi + "people/" + id);
     console.log(api.name)
 
     const data = { title: api.name };
@@ -61,7 +63,7 @@ app.get('/planets', (req, res) => {
 app.get('/planets/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
-    let api = await request("planets/" + id);
+    let api = await request(swapi + "planets/" + id);
     console.log(api.name)
 
     const data = { title: api.name };
@@ -76,7 +78,7 @@ app.get('/species', (req, res) => {
 app.get('/species/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
-    let api = await request("species/" + id);
+    let api = await request(swapi + "species/" + id);
     console.log(api.name)
 
     const data = { title: api.name };
@@ -91,7 +93,7 @@ app.get('/starships', (req, res) => {
 app.get('/starships/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
-    let api = await request("starships/" + id);
+    let api = await request(swapi + "starships/" + id);
     console.log(api.name)
 
     const data = { title: api.name };
@@ -106,7 +108,7 @@ app.get('/vehicles', (req, res) => {
 app.get('/vehicles/:id', async(req, res) => {
     const id = parseInt(req.params.id);
 
-    let api = await request("vehicles/" + id);
+    let api = await request(swapi + "vehicles/" + id);
     console.log(api.name)
 
     const data = { title: api.name };
@@ -118,7 +120,7 @@ console.log("L'application tourne.");
 
 async function request(pathApi) {
     try {
-        const response = await axios.get("https://swapi.dev/api/" + pathApi);
+        const response = await axios.get(pathApi);
         //console.log(response);
         return response.data;
     } catch (error) {
