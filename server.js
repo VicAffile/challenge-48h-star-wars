@@ -2,6 +2,7 @@ const express = require('express');
 const swig = require('swig');
 const path = require('path');
 const bodyParser = require('body-parser');
+const https = require('https');
 
 let app = express();
 app.use(bodyParser());
@@ -27,8 +28,10 @@ app.get('/films', (req, res) => {
 });
 
 app.get('/films/:id', (req, res) => {
+    const id = parseInt(req.params.id);
     const data = { title: "filmsId" };
     res.render("index", data);
+
 });
 
 app.get('/people', (req, res) => {
@@ -37,6 +40,7 @@ app.get('/people', (req, res) => {
 });
 
 app.get('/people/:id', (req, res) => {
+    const id = parseInt(req.params.id);
     const data = { title: "peopleId" };
     res.render("index", data);
 });
@@ -44,9 +48,11 @@ app.get('/people/:id', (req, res) => {
 app.get('/planets', (req, res) => {
     const data = { title: "planets" };
     res.render("index", data);
+
 });
 
 app.get('/planets/:id', (req, res) => {
+    const id = parseInt(req.params.id);
     const data = { title: "planetsId" };
     res.render("index", data);
 });
