@@ -42,9 +42,13 @@ app.get('/people', (req, res) => {
     res.render("index", data);
 });
 
-app.get('/people/:id', (req, res) => {
+app.get('/people/:id', async(req, res) => {
     const id = parseInt(req.params.id);
-    const data = { title: "peopleId" };
+
+    let api = await request("people/" + id);
+    console.log(api.name)
+
+    const data = { title: api.name };
     res.render("index", data);
 });
 
@@ -54,9 +58,14 @@ app.get('/planets', (req, res) => {
 
 });
 
-app.get('/planets/:id', (req, res) => {
+app.get('/planets/:id', async(req, res) => {
     const id = parseInt(req.params.id);
-    const data = { title: "planetsId" };
+
+    let api = await request("planets/" + id);
+    console.log(api.name)
+
+    const data = { title: api.name };
+    res.render("index", data);
 });
 
 app.get('/species', (req, res) => {
@@ -64,10 +73,13 @@ app.get('/species', (req, res) => {
     res.render("index", data);
 });
 
-app.get('/species/:id', (req, res) => {
+app.get('/species/:id', async(req, res) => {
     const id = parseInt(req.params.id);
-    const data = { title: "Species" };
-    console.log(id);
+
+    let api = await request("species/" + id);
+    console.log(api.name)
+
+    const data = { title: api.name };
     res.render("index", data);
 });
 
@@ -76,9 +88,13 @@ app.get('/starships', (req, res) => {
     res.render("index", data);
 });
 
-app.get('/starships/:id', (req, res) => {
+app.get('/starships/:id', async(req, res) => {
     const id = parseInt(req.params.id);
-    const data = { title: "Starships" };
+
+    let api = await request("starships/" + id);
+    console.log(api.name)
+
+    const data = { title: api.name };
     res.render("index", data);
 });
 
@@ -87,9 +103,13 @@ app.get('/vehicles', (req, res) => {
     res.render("index", data);
 });
 
-app.get('/vehicles/:id', (req, res) => {
+app.get('/vehicles/:id', async(req, res) => {
     const id = parseInt(req.params.id);
-    const data = { title: "Vehicles" };
+
+    let api = await request("vehicles/" + id);
+    console.log(api.name)
+
+    const data = { title: api.name };
     res.render("index", data);
 });
 
