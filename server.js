@@ -43,7 +43,6 @@ app.get('/films/:id', async(req, res) => {
         characters.push({ name: name, url: "/people/" + number });
     };
     api.characters = characters;
-    console.log(characters);
 
     const data = { title: api.title };
     res.render("index", data);
@@ -59,16 +58,53 @@ app.get('/people/:id', async(req, res) => {
 
     let api = await request(swapi + "people/" + id);
 
+    //films
     let films = [];
     for (let index in api.films) {
         const url = api.films[index];
         const number = url.split("/")[url.split("/").length - 2];
         let film = await request(url);
         film = film.title;
-        films.push({ film: film, url: "/people/" + number });
+        films.push({ film: film, url: "/films/" + number });
     };
     api.films = films;
     console.log(films);
+
+    //species
+    let species = [];
+    for (let index in api.species) {
+        const url = api.species[index];
+        const number = url.split("/")[url.split("/").length - 2];
+        let specie = await request(url);
+        specie = specie.name;
+        species.push({ specie: specie, url: "/species/" + number });
+    };
+    api.species = species;
+    console.log(species);
+
+    //vehicles
+    let vehicles = [];
+    for (let index in api.vehicles) {
+        const url = api.vehicles[index];
+        const number = url.split("/")[url.split("/").length - 2];
+        let vehicle = await request(url);
+        vehicle = vehicle.name;
+        vehicles.push({ vehicle: vehicle, url: "/vehicles/" + number });
+    };
+    api.vehicles = vehicles;
+    console.log(vehicles);
+
+    //starships
+    let starships = [];
+    for (let index in api.starships) {
+        const url = api.starships[index];
+        const number = url.split("/")[url.split("/").length - 2];
+        let starship = await request(url);
+        starship = starship.name;
+        starships.push({ starship: starship, url: "/starships/" + number });
+    };
+    api.starships = starships;
+    console.log(starships);
 
     const data = { title: api.name };
     res.render("index", data);
