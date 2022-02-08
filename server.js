@@ -131,13 +131,19 @@ app.get('/people/:id', async(req, res) => {
 
     let api = await request(swapi + "people/" + id);
 
+    const url = api.homeworld;
+    const number = url.split("/")[url.split("/").length - 2];
+    let name = await request(url);
+    name = name.name;
+    api.homeworld = { name: name, url: "/planets/" + number };
+
     let films = [];
     for (let index in api.films) {
         const url = api.films[index];
         const number = url.split("/")[url.split("/").length - 2];
         let film = await request(url);
-        film = film.title;
-        films.push({ film: film, url: "/films/" + number });
+        title = film.title;
+        films.push({ title: title, url: "/films/" + number });
     };
     api.films = films;
 
@@ -146,8 +152,8 @@ app.get('/people/:id', async(req, res) => {
         const url = api.species[index];
         const number = url.split("/")[url.split("/").length - 2];
         let specie = await request(url);
-        specie = specie.name;
-        species.push({ specie: specie, url: "/species/" + number });
+        name = specie.name;
+        species.push({ name: name, url: "/species/" + number });
     };
     api.species = species;
 
@@ -155,9 +161,9 @@ app.get('/people/:id', async(req, res) => {
     for (let index in api.vehicles) {
         const url = api.vehicles[index];
         const number = url.split("/")[url.split("/").length - 2];
-        let vehicle = await request(url);
-        vehicle = vehicle.name;
-        vehicles.push({ vehicle: vehicle, url: "/vehicles/" + number });
+        let name = await request(url);
+        name = name.name;
+        vehicles.push({ name: name, url: "/vehicles/" + number });
     };
     api.vehicles = vehicles;
 
@@ -166,8 +172,8 @@ app.get('/people/:id', async(req, res) => {
         const url = api.starships[index];
         const number = url.split("/")[url.split("/").length - 2];
         let starship = await request(url);
-        starship = starship.name;
-        starships.push({ starship: starship, url: "/starships/" + number });
+        name = starship.name;
+        starships.push({ name: name, url: "/starships/" + number });
     };
     api.starships = starships;
 
