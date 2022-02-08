@@ -1,14 +1,12 @@
 const questionsPeoples = [
     {
         question : 
-            'Lequel de ces personnages est le plus grand ? ',
-        reponse:
+            'Lequel de ces personnages est le plus grand ? '
     },
 
     {
         question : 
-            'Lequel de ces personnages est le plus âgé  ?',
-        reponse:
+            'Lequel de ces personnages est le plus âgé  ?'
     },  
 
     {
