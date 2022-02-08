@@ -30,7 +30,7 @@ app.set('views', __dirname + '/views');
 
 app.get('/', (req, res) => {
     const data = { title: "Star Wars", navbar: navbar };
-    res.render("index", data);
+    res.render("home", data);
 });
 
 app.get('/films', async(req, res) => {
@@ -39,12 +39,13 @@ app.get('/films', async(req, res) => {
     let films = [];
     for (let index in api.results) {
         const title = api.results[index].title;
+        const order = api.results[index].episode_id;
         const number = api.results[index].url.split("/")[api.results[index].url.split("/").length - 2];
-        films.push({ title: title, url: "/films/" + number });
+        films.push({ name: "Movie n°" + order + " : " + title, url: "/films/" + number });
     }
 
-    const data = { title: "Films", navbar: navbar, films: films };
-    res.render("index", data);
+    const data = { title: "Films", navbar: navbar, elements: films, buttons: { previous: null, next: null } };
+    res.render("list", data);
 });
 
 app.get('/films/:id', async(req, res) => {
@@ -81,8 +82,8 @@ app.get('/people', async(req, res) => {
         people.push({ name: name, url: "/people/" + number });
     }
 
-    const data = { title: "People", navbar: navbar, people: people };
-    res.render("index", data);
+    const data = { title: "People", navbar: navbar, elements: people, buttons: buttons(api, page) };
+    res.render("list", data);
 });
 
 app.get('/people/:id', async(req, res) => {
@@ -109,8 +110,8 @@ app.get('/planets', async(req, res) => {
         planets.push({ name: name, url: "/planets/" + number });
     }
 
-    const data = { title: "Planets", navbar: navbar, planets: planets };
-    res.render("index", data);
+    const data = { title: "Planets", navbar: navbar, elements: planets, buttons: buttons(api, page) };
+    res.render("list", data);
 
 });
 
@@ -139,8 +140,8 @@ app.get('/species', async(req, res) => {
     }
     console.log(species)
 
-    const data = { title: "Species", navbar: navbar, species: species };
-    res.render("index", data);
+    const data = { title: "Species", navbar: navbar, elements: species, buttons: buttons(api, page) };
+    res.render("list", data);
 });
 
 app.get('/species/:id', async(req, res) => {
@@ -167,8 +168,8 @@ app.get('/starships', async(req, res) => {
         starships.push({ name: name, url: "/starships/" + number });
     }
 
-    const data = { title: "Starships", navbar: navbar, starships: starships };
-    res.render("index", data);
+    const data = { title: "Starships", navbar: navbar, elements: starships, buttons: buttons(api, page) };
+    res.render("list", data);
 });
 
 app.get('/starships/:id', async(req, res) => {
@@ -195,8 +196,8 @@ app.get('/vehicles', async(req, res) => {
         vehicles.push({ name: name, url: "/vehicles/" + number });
     }
 
-    const data = { title: "Vehicles", navbar: navbar, vehicles: vehicles };
-    res.render("index", data);
+    const data = { title: "Vehicles", navbar: navbar, elements: vehicles, buttons: buttons(api, page) };
+    res.render("list", data);
 });
 
 app.get('/vehicles/:id', async(req, res) => {
@@ -219,4 +220,16 @@ async function request(pathApi) {
     } catch (error) {
         console.error(error);
     }
+}
+
+function buttons(api, page) {
+    page = page == undefined ? 1 : page;
+    let buttons = { previous: null, next: null };
+    if (api.previous != null) {
+        buttons.previous = "/" + api.previous.split("/")[api.previous.split("/").length - 2] + "/?page=" + (page - 1);
+    }
+    if (api.next != null) {
+        buttons.next = "/" + api.next.split("/")[api.next.split("/").length - 2] + "/?page=" + (page - (-1));
+    }
+    return buttons;
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/list.css">
+</head>
+<nav>
+    <a href="/">
+        <div>
+            <img src="/images/logo.png" alt="">
+        </div>
+    </a>
+    <ul>
+        {% for element in navbar %}
+        <a href="{{element.url}}">
+            <li>
+                <h2>{{element.name}}</h2>
+                <div>
+                    <img src="/images/ligthsaber-removebg-preview.png" alt="{{element.url}}">
+                </div>
+            </li>
+        </a>
+        {% endfor %}
+    </ul>
+</nav>
+
+{% block content %} {% endblock %}
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+#list {
+    --black: rgba(0, 0, 0, 0.8);
+    --grey: rgba(0, 0, 0, 0.5);
+    margin: auto;
+    margin-top: 260px;
+    width: 50%;
+    background: url("/images/hyperspace.png") no-repeat center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#list a {
+    width: 100%;
+}
+
+#list h1 {
+    padding: 10px;
+    border-radius: 10px;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: xx-large;
+    background-color: var(--black);
+}
+
+#list li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 4px;
+    width: 100%;
+    border-radius: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: medium;
+    background-color: var(--grey);
+}
+
+#list li:hover {
+    background-color: var(--black);
+}
+
+#list ul {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#next {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+#previous {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+}

@@ -1,0 +1,22 @@
+{% extends 'layout.html' %} {% block content %}
+<section id="list">
+    <h1>{{title}}</h1>
+    <ul>
+        {% for element in elements %}
+        <a href="{{element.url}}">
+            <li>
+                <h3>{{element.name}}</h3>
+            </li>
+        </a>
+        {% endfor %}
+    </ul>
+</section>
+{% if buttons.previous != null %}
+<a id="previous" href="{{buttons.previous}}">
+    <span>Previous page</span>
+</a>
+{% endif %} {% if buttons.next != null %}
+<a id="next" href="{{buttons.next}}">
+    <span>Next page</span>
+</a>
+{% endif %} {% endblock %}
