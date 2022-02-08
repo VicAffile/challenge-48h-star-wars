@@ -1,14 +1,34 @@
 {% extends 'layout.html' %} {% block content %}
 <section id="planet">
     <h1>Name : {{planet.name}}</h1>
-    <h1>Climate : {{planet.climate}}</h1>
-    <h1>Diameter : {{planet.diameter}}</h1>
-    <h1>Gravity : {{planet.gravity}}</h1>
-    <h1>Orbital period : {{planet.orbital_period}}</h1>
-    <h1>Population : {{planet.population}}</h1>
-    <h1>Rotation period : {{planet.rotation_period}}</h1>
-    <h1>Surface water : {{planet.surface_water}}</h1>
-    <h1>Rotation period : {{planet.rotation_period}}</h1>
-    <h1>Terrain : {{planet.terrain}}</h1>
+    <p>Climate : {{planet.climate}}</p>
+    <p>Diameter : {{planet.diameter}}</p>
+    <p>Gravity : {{planet.gravity}}</p>
+    <p>Orbital period : {{planet.orbital_period}}</p>
+    <p>Population : {{planet.population}}</p>
+    <div>
+        <span>Residents :</span>
+        <ul>
+            {% for resident in planet.residents %}
+            <a href="{{resident.url}}">
+                <li>{{resident.name}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <span>Films :</span>
+        <ul>
+            {% for film in planet.films %}
+            <a href="{{film.url}}">
+                <li>{{film.title}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    <p>Rotation period : {{planet.rotation_period}}</p>
+    <p>Surface water : {{planet.surface_water}}</p>
+    <p>Rotation period : {{planet.rotation_period}}</p>
+    <p>Terrain : {{planet.terrain}}</p>
 </section>
 {% endblock %}

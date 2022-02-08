@@ -11,8 +11,26 @@
     <h1>Cargo capacity : {{vehicle.cargo_capacity}}</h1>
     <h1>Consumables : {{vehicle.consumables}}</h1>
     <h1>Vehicle class : {{vehicle.vehicle_class}}</h1>
-    <!-- [] -->
-    <!-- [] -->
+    <div>
+        <span>Pilots :</span>
+        <ul>
+            {% for pilot in vehicle.pilots %}
+            <a href="{{pilot.url}}">
+                <li>{{pilot.name}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <span>Films :</span>
+        <ul>
+            {% for film in vehicle.films %}
+            <a href="{{film.url}}">
+                <li>{{film.title}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
 
 </section>
 {% endblock %}

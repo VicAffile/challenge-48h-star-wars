@@ -1,16 +1,36 @@
 {% extends 'layout.html' %} {% block content %}
 <section id="specie">
     <h1> Name : {{specie.name}}</h1>
-    <h1> Height : {{specie.average_height}}</h1>
-    <h1> Lifespan : {{specie.average_lifespan}}</h1>
-    <h1> Classification : {{specie.classification}}</h1>
-    <h1> Created : {{specie.created}}</h1>
-    <h1> Designation : {{specie.designation}}</h1>
-    <h1> Edited : {{specie.edited}}</h1>
-    <h1> Eye colors : {{specie.eye_colors}}</h1>
-    <h1> Hair colors : {{specie.hair_colors}}</h1>
-    <h1> Homeworld : {{specie.homeworld}}</h1>
-    <h1> Language : {{specie.language}}</h1>
-    <h1> Skin colors : {{specie.skin_colors}}</h1>
+    <p> Classification : {{specie.classification}}</p>
+    <p> Designation : {{specie.designation}}</p>
+    <p> Average height : {{specie.average_height}}</p>
+    <p> Skin colors : {{specie.skin_colors}}</p>
+    <p> Hair colors : {{specie.hair_colors}}</p>
+    <p> Eye colors : {{specie.eye_colors}}</p>
+    <p> Average lifespan : {{specie.average_lifespan}}</p>
+    <p>Homeworld :
+        <a href="{{specie.homeworld.url}}">{{specie.homeworld.name}}</a>
+    </p>
+    <p> Language : {{specie.language}}</p>
+    <div>
+        <span>People :</span>
+        <ul>
+            {% for character in specie.people %}
+            <a href="{{character.url}}">
+                <li>{{character.name}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <span>Films :</span>
+        <ul>
+            {% for film in specie.films %}
+            <a href="{{film.url}}">
+                <li>{{film.title}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
 </section>
 {% endblock %}
