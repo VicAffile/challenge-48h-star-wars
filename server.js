@@ -63,8 +63,8 @@ app.get('/films/:id', async(req, res) => {
     };
     api.characters = characters;
 
-    const data = { title: api.title, navbar: navbar };
-    res.render("index", data);
+    const data = { title: api.title, navbar: navbar, film: api };
+    res.render("film", data);
 });
 
 app.get('/people', async(req, res) => {
@@ -91,8 +91,8 @@ app.get('/people/:id', async(req, res) => {
 
     let api = await request(swapi + "people/" + id);
 
-    const data = { title: api.name, navbar: navbar };
-    res.render("index", data);
+    const data = { title: api.name, navbar: navbar, people: api };
+    res.render("people", data);
 });
 
 app.get('/planets', async(req, res) => {
@@ -120,8 +120,8 @@ app.get('/planets/:id', async(req, res) => {
 
     let api = await request(swapi + "planets/" + id);
 
-    const data = { title: api.name, navbar: navbar };
-    res.render("index", data);
+    const data = { title: api.name, navbar: navbar, planet: api };
+    res.render("planet", data);
 });
 
 app.get('/species', async(req, res) => {
@@ -149,8 +149,8 @@ app.get('/species/:id', async(req, res) => {
 
     let api = await request(swapi + "species/" + id);
 
-    const data = { title: api.name, navbar: navbar };
-    res.render("index", data);
+    const data = { title: api.name, navbar: navbar, specie: api };
+    res.render("specie", data);
 });
 
 app.get('/starships', async(req, res) => {
@@ -177,8 +177,8 @@ app.get('/starships/:id', async(req, res) => {
 
     let api = await request(swapi + "starships/" + id);
 
-    const data = { title: api.name, navbar: navbar };
-    res.render("index", data);
+    const data = { title: api.name, navbar: navbar, starship: api };
+    res.render("starship", data);
 });
 
 app.get('/vehicles', async(req, res) => {
@@ -205,8 +205,8 @@ app.get('/vehicles/:id', async(req, res) => {
 
     let api = await request(swapi + "vehicles/" + id);
 
-    const data = { title: api.name, navbar: navbar };
-    res.render("index", data);
+    const data = { title: api.name, navbar: navbar, vehicle: api };
+    res.render("vehicle", data);
 });
 
 app.listen(process.env.PORT || 8080);
