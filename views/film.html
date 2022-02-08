@@ -1,12 +1,12 @@
 {% extends 'layout.html' %} {% block content %}
 <section id="film">
     <h1>Movie n°{{film.episode_id}} - {{film.title}}</h1>
-    <p>Introduction : {{film.opening_crawl}}</p>
+    <p class="opening">Introduction : {{film.opening_crawl}}</p>
     <p>Director : {{film.director}}</p>
     <p>Producer : {{film.producer}}</p>
     <p>Release date : {{film.release_date}}</p>
     <div>
-        <span>Characters :</span>
+        <span>Characters</span>
         <ul>
             {% for character in film.characters %}
             <a href="{{character.url}}">
@@ -16,7 +16,7 @@
         </ul>
     </div>
     <div>
-        <span>Planets :</span>
+        <span>Planets</span>
         <ul>
             {% for planet in film.planets %}
             <a href="{{planet.url}}">
@@ -26,7 +26,7 @@
         </ul>
     </div>
     <div>
-        <span>Starships :</span>
+        <span>Starships</span>
         <ul>
             {% for starship in film.starships %}
             <a href="{{starship.url}}">
@@ -36,7 +36,7 @@
         </ul>
     </div>
     <div>
-        <span>Species :</span>
+        <span>Species</span>
         <ul>
             {% for specie in film.species %}
             <a href="{{specie.url}}">

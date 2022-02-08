@@ -195,7 +195,6 @@ app.get('/species', async(req, res) => {
         const number = api.results[index].url.split("/")[api.results[index].url.split("/").length - 2];
         species.push({ name: name, url: "/species/" + number });
     }
-    console.log(species)
 
     const data = { title: "Species", navbar: navbar, elements: species, buttons: buttons(api, page) };
     res.render("list", data);
@@ -334,7 +333,6 @@ app.get('/starships/:id', async(req, res) => {
         films.push({ title: title, url: "/films/" + number });
     };
     api.films = films;
-    console.log(films)
 
     const data = { title: api.name, navbar: navbar, starship: api };
     res.render("starship", data);
@@ -391,12 +389,10 @@ app.get('/vehicles/:id', async(req, res) => {
 });
 
 app.listen(process.env.PORT || 8080);
-console.log("L'application tourne.");
 
 async function request(pathApi) {
     try {
         const response = await axios.get(pathApi);
-        //console.log(response);
         return response.data;
     } catch (error) {
         console.error(error);
