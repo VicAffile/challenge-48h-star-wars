@@ -1,0 +1,39 @@
+#planet {
+    margin: auto;
+    width: 50%;
+    margin-top: 260px;
+    margin-bottom: 20px;
+    font-family: var(--font-family);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.opening {
+    text-align: center;
+}
+
+#planet div {
+    margin-top: 45px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#planet div span {
+    text-decoration: underline;
+}
+
+#planet div ul {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#planet div ul a {
+    margin: 15px;
+}
