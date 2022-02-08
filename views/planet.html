@@ -1,14 +1,18 @@
 {% extends 'layout.html' %} {% block content %}
-<section id="planet">
-    <h1>Name : {{planet.name}}</h1>
+<section id="planet" class="page">
+    <h1>{{planet.name}}</h1>
     <p>Climate : {{planet.climate}}</p>
     <p>Diameter : {{planet.diameter}}</p>
     <p>Gravity : {{planet.gravity}}</p>
     <p>Orbital period : {{planet.orbital_period}}</p>
     <p>Population : {{planet.population}}</p>
+    <p>Rotation period : {{planet.rotation_period}}</p>
+    <p>Surface water : {{planet.surface_water}}</p>
+    <p>Rotation period : {{planet.rotation_period}}</p>
+    <p>Terrain : {{planet.terrain}}</p>
     <div>
-        <span>Residents :</span>
-        <ul>
+        <span>Residents</span>
+        <ul class="little">
             {% for resident in planet.residents %}
             <a href="{{resident.url}}">
                 <li>{{resident.name}}</li>
@@ -17,8 +21,8 @@
         </ul>
     </div>
     <div>
-        <span>Films :</span>
-        <ul>
+        <span>Films</span>
+        <ul class="little">
             {% for film in planet.films %}
             <a href="{{film.url}}">
                 <li>{{film.title}}</li>
@@ -26,9 +30,5 @@
             {% endfor %}
         </ul>
     </div>
-    <p>Rotation period : {{planet.rotation_period}}</p>
-    <p>Surface water : {{planet.surface_water}}</p>
-    <p>Rotation period : {{planet.rotation_period}}</p>
-    <p>Terrain : {{planet.terrain}}</p>
 </section>
 {% endblock %}

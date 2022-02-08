@@ -1,6 +1,6 @@
 {% extends 'layout.html' %} {% block content %}
 <section id="people" class="page">
-    <h1>Name : {{people.name}}</h1>
+    <h1>{{people.name}}</h1>
     <p>Height : {{people.height}}</p>
     <p>Hair color : {{people.hair_color}}</p>
     <p>Skin color : {{people.skin_color}}</p>
@@ -11,7 +11,7 @@
         <a href="{{people.homeworld.url}}">{{people.homeworld.name}}</a>
     </p>
     <div>
-        <span>Films :</span>
+        <span>Films</span>
         <ul class="little">
             {% for film in people.films %}
             <a href="{{film.url}}">
@@ -21,7 +21,7 @@
         </ul>
     </div>
     <div>
-        <span>Species :</span>
+        <span>Species</span>
         <ul class="little">
             {% for specie in people.species %}
             <a href="{{specie.url}}">
@@ -31,7 +31,7 @@
         </ul>
     </div>
     <div>
-        <span>Vehicles :</span>
+        <span>Vehicles</span>
         <ul class="little">
             {% for vehicle in people.vehicles %}
             <a href="{{vehicle.url}}">
@@ -41,7 +41,7 @@
         </ul>
     </div>
     <div>
-        <span>Starships :</span>
+        <span>Starships</span>
         <ul class="little">
             {% for starship in people.starships %}
             <a href="{{starship.url}}">
