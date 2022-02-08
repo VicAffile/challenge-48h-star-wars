@@ -52,3 +52,76 @@ nav ul {
     flex-direction: row;
     justify-content: space-around;
 }
+
+#menu {
+    z-index: 50;
+    width: 42px;
+    height: 24px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+#menu span {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    transform: background-color 0.5s ease-in-out;
+}
+
+#menu span::before,
+#menu span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+}
+
+#menu span::before {
+    transform: translateY(-10px);
+}
+
+#menu span::after {
+    transform: translateY(10px);
+}
+
+#menu.active span {
+    background-color: transparent;
+}
+
+#menu.active span::before {
+    transform: translateY(0px) rotateZ(45deg);
+}
+
+#menu.active span::after {
+    transform: translateY(0px) rotateZ(-45deg);
+}
+
+@media all and (min-width: 906px) {
+    #menu {
+        display: none;
+    }
+}
+
+@media all and (max-width: 906px) {
+    #navbar {
+        border-radius: 0px 10px 10px 0px;
+        width: auto;
+        background-color: var(--black);
+        position: fixed;
+        top: 50px;
+        left: -155px;
+        flex-direction: column;
+    }
+    #navbar.active {
+        left: 0px;
+    }
+}
+
+@media all and (max-width: 960px) {}

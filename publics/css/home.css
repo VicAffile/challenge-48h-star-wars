@@ -1,14 +1,15 @@
 #home {
     display: none;
-    margin: auto;
-    margin-top: 260px;
-    width: 50%;
     font-family: var(--font-family);
     font-weight: bold;
     color: var(--primary-color);
 }
 
 #home p {
+    margin: auto;
+    margin-top: 260px;
+    margin-bottom: 20px;
+    width: 70%;
     font-size: xx-large;
     text-align: justify;
 }
@@ -18,4 +19,26 @@ video {
     bottom: 0px;
     left: 0px;
     width: 100%;
+}
+
+@media all and (max-width: 970px) {
+    #home {
+        display: contents;
+    }
+    video {
+        display: none;
+    }
+}
+
+@media all and (max-width: 906px) {
+    #home p {
+        margin-top: 165px;
+    }
+}
+
+@media all and (max-width: 650px) {
+    #home p {
+        width: 90%;
+        ;
+    }
 }

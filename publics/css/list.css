@@ -4,7 +4,6 @@
     margin: auto;
     margin-top: 260px;
     width: 50%;
-    background: url("/images/hyperspace.png") no-repeat center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,4 +67,31 @@
 #previous span {
     font-family: var(--font-family);
     font-weight: bold;
+}
+
+@media all and (max-width: 906px) {
+    #list {
+        margin-top: 165px;
+    }
+}
+
+@media all and (max-width: 840px) {
+    #list {
+        width: 70%;
+    }
+}
+
+@media all and (max-width: 600px) {
+    #previous,
+    #next {
+        padding: 5px;
+        background-color: var(--primary-color);
+        color: black;
+    }
+}
+
+@media all and (max-width: 580px) {
+    #list {
+        width: 90%;
+    }
 }
