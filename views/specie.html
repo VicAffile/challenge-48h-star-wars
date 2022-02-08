@@ -1,5 +1,5 @@
 {% extends 'layout.html' %} {% block content %}
-<section id="specie">
+<section id="specie" class="page">
     <h1> Name : {{specie.name}}</h1>
     <p> Classification : {{specie.classification}}</p>
     <p> Designation : {{specie.designation}}</p>
@@ -14,7 +14,7 @@
     <p> Language : {{specie.language}}</p>
     <div>
         <span>People :</span>
-        <ul>
+        <ul class="little">
             {% for character in specie.people %}
             <a href="{{character.url}}">
                 <li>{{character.name}}</li>
@@ -24,7 +24,7 @@
     </div>
     <div>
         <span>Films :</span>
-        <ul>
+        <ul class="little">
             {% for film in specie.films %}
             <a href="{{film.url}}">
                 <li>{{film.title}}</li>
