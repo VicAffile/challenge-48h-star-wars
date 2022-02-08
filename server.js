@@ -4,6 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
+const questions = require('./json/questions.json');
+
 const swapi = "https://swapi.dev/api/";
 
 const navbar = [
@@ -389,7 +391,7 @@ app.get('/vehicles/:id', async(req, res) => {
     res.render("vehicle", data);
 });
 
-app.get('/quizz', async(req, res) => {
+app.get('/quizz', (req, res) => {
     const listQuizz = [
         { name: "General", url: "/quizz/general", picture: "/images/general.jpg" },
         { name: "People", url: "/quizz/people", picture: "/images/people.jpg" },
@@ -399,6 +401,14 @@ app.get('/quizz', async(req, res) => {
     const data = { title: "Choix du quizz", navbar: navbar, listQuizz: listQuizz };
     res.render("listQuizz", data);
 });
+
+app.get('/quizz/general', (req, res) => {
+    const questionNumber = questions.length
+    const number = getRandomIntInclusive(1, questionNumber);
+    const question = selectQuestion(number);
+    const data = { title: "Choix du quizz", navbar: navbar };
+    res.render("quizz", data);
+})
 
 app.listen(process.env.PORT || 8080);
 
@@ -421,4 +431,25 @@ function buttons(api, page) {
         buttons.next = "/" + api.next.split("/")[api.next.split("/").length - 2] + "/?page=" + (page - (-1));
     }
     return buttons;
+}
+
+function selectQuestion(number) {
+    const data = questions.find(data => data.id === number);
+    console.log(data);
+    let question = { question: null, response: { a: null, b: null, c: null, d: null }, good: null };
+    switch (data.id) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+    }
+    return question;
+}
+
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }

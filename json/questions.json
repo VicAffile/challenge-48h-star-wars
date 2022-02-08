@@ -1,0 +1,16 @@
+[{
+        "questions": " est originaire de ?",
+        "category": "people",
+        "id": 1
+    },
+    {
+        "questions": " mesure ?",
+        "category": "people",
+        "id": 2
+    },
+    {
+        "questions": " a les yeux ?",
+        "category": "people",
+        "id": 3
+    }
+]
