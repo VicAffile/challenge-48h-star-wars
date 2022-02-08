@@ -1,20 +1,38 @@
 {% extends 'layout.html' %} {% block content %}
-<section id="starship">
-    <h1>Name : {{starship.name}}</h1>
-    <h1>Model : {{starship.model}}</h1>
-    <h1>Manufacturer : {{starship.manufacturer}}</h1>
-    <h1>Cost in credits : {{starship.cost_in_credits}}</h1>
-    <h1>Length : {{starship.length}}</h1>
-    <h1>Max atmosphering speed : {{starship.max_atmosphering_speed}}</h1>
-    <h1>Crew : {{starship.crew}}</h1>
-    <h1>Passengers : {{starship.passengers}}</h1>
-    <h1>Cargo capacity : {{starship.cargo_capacity}}</h1>
-    <h1>Consumables : {{starship.consumables}}</h1>
-    <h1>Hyperdrive rating : {{starship.hyperdrive_rating}}</h1>
-    <h1>MGLT : {{starship.MGLT}}</h1>
-    <h1>Starship class : {{starship.starship_class}}</h1>
-    <!-- [] -->
-    <!-- [] -->
+<section id="starship" class="page">
+    <h1>{{starship.name}}</h1>
+    <p>Model : {{starship.model}}</p>
+    <p>Manufacturer : {{starship.manufacturer}}</p>
+    <p>Cost in credits : {{starship.cost_in_credits}}</p>
+    <p>Length : {{starship.length}}</p>
+    <p>Max atmosphering speed : {{starship.max_atmosphering_speed}}</p>
+    <p>Crew : {{starship.crew}}</p>
+    <p>Passengers : {{starship.passengers}}</p>
+    <p>Cargo capacity : {{starship.cargo_capacity}}</p>
+    <p>Consumables : {{starship.consumables}}</p>
+    <p>Hyperdrive rating : {{starship.hyperdrive_rating}}</p>
+    <p>MGLT : {{starship.MGLT}}</p>
+    <p>Starship class : {{starship.starship_class}}</p>
+    <div>
+        <span>Pilots</span>
+        <ul class="little">
+            {% for pilot in starship.pilots %}
+            <a href="{{pilot.url}}">
+                <li>{{pilot.name}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <span>Films</span>
+        <ul class="little">
+            {% for film in starship.films %}
+            <a href="{{film.url}}">
+                <li>{{film.title}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
 
 </section>
 {% endblock %}
