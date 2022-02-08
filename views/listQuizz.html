@@ -1,2 +1,14 @@
 {% extends 'layout.html' %} {% block content %}
+<section id="listQuizz">
+    {% for type in listQuizz %}
+    <div>
+        <div class="img">
+            <img src="{{type.picture}}">
+        </div>
+        <div class="title">
+            <a href="{{type.url}}">{{type.name}}</a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
 {% endblock %}

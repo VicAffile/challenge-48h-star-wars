@@ -12,7 +12,8 @@ const navbar = [
     { name: "Planets", url: "/planets" },
     { name: "Species", url: "/species" },
     { name: "Starships", url: "/Starships" },
-    { name: "Vehicles", url: "/vehicles" }
+    { name: "Vehicles", url: "/vehicles" },
+    { name: "Quizz", url: "/quizz" }
 ];
 
 let app = express();
@@ -386,6 +387,17 @@ app.get('/vehicles/:id', async(req, res) => {
 
     const data = { title: api.name, navbar: navbar, vehicle: api };
     res.render("vehicle", data);
+});
+
+app.get('/quizz', async(req, res) => {
+    const listQuizz = [
+        { name: "General", url: "/quizz/general", picture: "/images/general.jpg" },
+        { name: "People", url: "/quizz/people", picture: "/images/people.jpg" },
+        { name: "Film", url: "/quizz/film", picture: "/images/film.jpeg" },
+        { name: "Planet", url: "/quizz/planet", picture: "/images/planet.jpg" }
+    ];
+    const data = { title: "Choix du quizz", navbar: navbar, listQuizz: listQuizz };
+    res.render("listQuizz", data);
 });
 
 app.listen(process.env.PORT || 8080);
