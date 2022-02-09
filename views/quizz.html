@@ -1,0 +1,26 @@
+{% extends 'layout.html' %} {% block content %}
+<section id="quizz">
+    <h2>{{question.question}}</h2>
+    <div id="form" data-good="{{question.good}}">
+        <div>
+            <input type="radio" id="a" name="quizz" value="{{question.responses.a}}">
+            <label for="{{question.responses.a}}">{{question.responses.a}}</label>
+        </div>
+        <div>
+            <input type="radio" id="b" name="quizz" value="{{question.responses.b}}">
+            <label for="{{question.responses.b}}">{{question.responses.b}}</label>
+        </div>
+        <div>
+            <input type="radio" id="c" name="quizz" value="{{question.responses.c}}">
+            <label for="{{question.responses.c}}">{{question.responses.c}}</label>
+        </div>
+        <div>
+            <input type="radio" id="d" name="quizz" value="{{question.responses.d}}">
+            <label for="{{question.responses.d}}">{{question.responses.d}}</label>
+        </div>
+    </div>
+    <button onclick="send()">Send</button>
+</section>
+
+<script src="/js/quizz.js"></script>
+{% endblock %}

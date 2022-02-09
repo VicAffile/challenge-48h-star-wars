@@ -1,0 +1,16 @@
+#result {
+    color: var(--primary-color);
+    margin: auto;
+    margin-top: 260px;
+    margin-bottom: 20px;
+}
+
+#result div {
+    text-align: center;
+}
+
+#result span {
+    font-family: var(--font-family);
+    font-size: xx-large;
+    font-weight: bold;
+}
