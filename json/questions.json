@@ -1,16 +1,26 @@
 [{
-        "questions": " est originaire de ?",
+        "question": " est originaire de ?",
         "category": "people",
         "id": 1
     },
     {
-        "questions": " mesure ?",
+        "question": " pèse ?",
         "category": "people",
         "id": 2
     },
     {
-        "questions": " a les yeux ?",
+        "question": " mesure ?",
         "category": "people",
         "id": 3
+    },
+    {
+        "question": " a pour numero ?",
+        "category": "film",
+        "id": 4
+    },
+    {
+        "question": " a une population de ?",
+        "category": "planet",
+        "id": 5
     }
 ]
